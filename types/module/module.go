@@ -483,6 +483,10 @@ func (m *Manager) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, genesisData 
 	var validatorUpdates []abci.ValidatorUpdate
 	ctx.Logger().Info("initializing blockchain state from genesis.json")
 	for _, moduleName := range m.OrderInitGenesis {
+		if moduleName == "poa" {
+			fmt.Println("hello poa")
+		}
+
 		if genesisData[moduleName] == nil {
 			continue
 		}
